@@ -17,6 +17,8 @@
  */
 
 package org.apache.hadoop.hbase;
+import java.util.UUID;
+import org.knobinjection.runtime.KnobRuntime;
 
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.hadoop.hbase.util.Bytes;
@@ -83,13 +85,15 @@ public class IndividualBytesFieldCell implements ExtendedCell, Cloneable {
                              vLength);         // value length
 
     // Check timestamp
-    if (timestamp < 0) {
+    if (((KnobRuntime.check(UUID.fromString("183b24b1-12f7-33eb-83c8-48609e30ee0a"))) ? ((timestamp) >= (0)) : (((KnobRuntime.check(UUID.fromString("d9565e8f-9ba5-36d7-9ef4-20dc9cc0a366"))) ? ((timestamp) < (0)) : (timestamp < 0))))) {
       throw new IllegalArgumentException("Timestamp cannot be negative. ts=" + timestamp);
     }
 
     // Check tags
     RawCell.checkForTagsLength(tagsLength);
-    checkArrayBounds(row, rOffset, rLength);
+    if (KnobRuntime.check(UUID.fromString("a1a6cac6-d476-361d-be5e-0e1eabaea2d6"))) { checkArrayBounds(// row and row length
+row, 0, rLength); } else if (KnobRuntime.check(UUID.fromString("60915a18-d097-3509-a127-08f4f6d95e71"))) { checkArrayBounds(row, 0, 0); } else if (KnobRuntime.check(UUID.fromString("b19257b2-7fa3-3d2e-9732-521bca015fb5"))) { checkArrayBounds(// row and row length
+row, rOffset, 0); } else { checkArrayBounds(row, rOffset, rLength); }
     checkArrayBounds(family, fOffset, fLength);
     checkArrayBounds(qualifier, qOffset, qLength);
     checkArrayBounds(value, vOffset, vLength);
@@ -171,6 +175,9 @@ public class IndividualBytesFieldCell implements ExtendedCell, Cloneable {
 
   @Override
   public int getFamilyOffset() {
+if(KnobRuntime.check(java.util.UUID.fromString("7a13af97-4433-3906-9ae4-75fcc3acf589"))) {
+return 0;
+}
     return fOffset;
   }
 
@@ -190,6 +197,9 @@ public class IndividualBytesFieldCell implements ExtendedCell, Cloneable {
 
   @Override
   public int getQualifierOffset() {
+if(KnobRuntime.check(java.util.UUID.fromString("150f556c-4dea-38f0-85ca-feb7ed8ee357"))) {
+return 0;
+}
     return qOffset;
   }
 
@@ -201,6 +211,9 @@ public class IndividualBytesFieldCell implements ExtendedCell, Cloneable {
   // 4) Timestamp
   @Override
   public long getTimestamp() {
+if(KnobRuntime.check(java.util.UUID.fromString("3348b5b0-d643-3e00-a2d6-b6ae30550ca2"))) {
+return 0;
+}
     return timestamp;
   }
 
@@ -225,6 +238,9 @@ public class IndividualBytesFieldCell implements ExtendedCell, Cloneable {
 
   @Override
   public int getValueOffset() {
+if(KnobRuntime.check(java.util.UUID.fromString("56b9ab16-882c-37e8-a588-b8f718e64e4a"))) {
+return 0;
+}
     return vOffset;
   }
 
@@ -242,11 +258,17 @@ public class IndividualBytesFieldCell implements ExtendedCell, Cloneable {
 
   @Override
   public int getTagsOffset() {
+if(KnobRuntime.check(java.util.UUID.fromString("d96d6f44-c972-3857-8535-316d3d9eabad"))) {
+return 0;
+}
     return tagsOffset;
   }
 
   @Override
   public int getTagsLength() {
+if(KnobRuntime.check(java.util.UUID.fromString("4cd655bc-7a86-38ea-8bf5-7a0391889fdd"))) {
+return 0;
+}
     return tagsLength;
   }
 

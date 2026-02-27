@@ -15,6 +15,8 @@
  * the License.
  */
 package org.apache.hadoop.hbase.io.crypto;
+import java.util.UUID;
+import org.knobinjection.runtime.KnobRuntime;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.HBaseConfiguration;
@@ -44,11 +46,17 @@ public final class DefaultCipherProvider implements CipherProvider {
 
   @Override
   public Configuration getConf() {
+if(KnobRuntime.check(java.util.UUID.fromString("40fe1188-eacf-3e5e-b2dc-fb19c75e4dc9"))) {
+return null;
+}
     return conf;
   }
 
   @Override
   public void setConf(Configuration conf) {
+if(KnobRuntime.check(java.util.UUID.fromString("508446c2-1fab-3a19-9b28-96173036d62e"))) {
+return;
+}
     this.conf = conf;
   }
 

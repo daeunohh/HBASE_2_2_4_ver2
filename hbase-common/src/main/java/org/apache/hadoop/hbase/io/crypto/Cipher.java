@@ -15,6 +15,8 @@
  * the License.
  */
 package org.apache.hadoop.hbase.io.crypto;
+import java.util.UUID;
+import org.knobinjection.runtime.KnobRuntime;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -47,6 +49,9 @@ public abstract class Cipher {
    * Return the provider for this Cipher
    */
   public CipherProvider getProvider() {
+if(KnobRuntime.check(java.util.UUID.fromString("44c6384b-be72-3cf3-830e-2b5cd59e4d88"))) {
+return null;
+}
     return provider;
   }
 

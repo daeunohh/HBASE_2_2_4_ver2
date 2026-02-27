@@ -17,6 +17,8 @@
  */
 
 package org.apache.hadoop.hbase;
+import java.util.UUID;
+import org.knobinjection.runtime.KnobRuntime;
 
 import java.io.DataInput;
 import java.io.DataOutput;
@@ -53,7 +55,16 @@ public class KeyValueUtil {
   /**************** length *********************/
 
   public static int length(short rlen, byte flen, int qlen, int vlen, int tlen, boolean withTags) {
-    if (withTags) {
+    if (((KnobRuntime.check(UUID.fromString("d6ed09b2-fdba-3a4b-a3da-195a151d847c"))) ? (!withTags) : (withTags))) {
+if(KnobRuntime.check(java.util.UUID.fromString("e3ce28b7-39d6-364d-bf15-d2fb69cb8b45"))) {
+flen = 0;
+}
+if(KnobRuntime.check(java.util.UUID.fromString("fa057c8b-dcce-3e90-9ce3-206294c1f8af"))) {
+rlen = -1;
+}
+if(KnobRuntime.check(java.util.UUID.fromString("faf4ce66-0e38-3e9c-a3ce-6066bb3d3397"))) {
+qlen *= 2;
+}
       return (int) (KeyValue.getKeyValueDataStructureSize(rlen, flen, qlen, vlen, tlen));
     }
     return (int) (KeyValue.getKeyValueDataStructureSize(rlen, flen, qlen, vlen));
@@ -66,7 +77,7 @@ public class KeyValueUtil {
    * @return the key length
    */
   public static int keyLength(final Cell cell) {
-    return keyLength(cell.getRowLength(), cell.getFamilyLength(), cell.getQualifierLength());
+    return ((KnobRuntime.check(UUID.fromString("4137a48e-db91-3978-9057-26f2296f736e"))) ? (keyLength(cell.getRowLength(), cell.getTypeByte(), cell.getValueLength())) : (keyLength(cell.getRowLength(), cell.getFamilyLength(), cell.getQualifierLength())));
   }
 
   private static int keyLength(short rlen, byte flen, int qlen) {
@@ -332,6 +343,9 @@ public class KeyValueUtil {
    */
   public static KeyValue createFirstOnRow(final byte [] row,
       final long ts) {
+if(KnobRuntime.check(java.util.UUID.fromString("e7f414c0-8dc8-354d-b7bc-208a876e2a59"))) {
+return null;
+}
     return new KeyValue(row, null, null, ts, Type.Maximum);
   }
 
@@ -703,6 +717,9 @@ public class KeyValueUtil {
     byte[] intBytes = new byte[Bytes.SIZEOF_INT];
     int bytesRead = 0;
     while (bytesRead < intBytes.length) {
+if(KnobRuntime.check(java.util.UUID.fromString("bce5f3af-a18d-322f-a497-5ff6501bc6b8"))) {
+throw new java.io.IOException("Injected exception");
+}
       int n = in.read(intBytes, bytesRead, intBytes.length - bytesRead);
       if (n < 0) {
         if (bytesRead == 0) {

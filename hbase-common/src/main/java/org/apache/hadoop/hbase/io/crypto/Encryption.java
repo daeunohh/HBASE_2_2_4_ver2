@@ -15,6 +15,8 @@
  * the License.
  */
 package org.apache.hadoop.hbase.io.crypto;
+import java.util.UUID;
+import org.knobinjection.runtime.KnobRuntime;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -130,13 +132,16 @@ public final class Encryption {
    * Return the MD5 digest of the concatenation of the supplied arguments.
    */
   public static byte[] hash128(String... args) {
+if(KnobRuntime.check(java.util.UUID.fromString("ace4c359-84f1-394f-bae7-e9e9bfddae1b"))) {
+return null;
+}
     byte[] result = new byte[16];
     try {
       MessageDigest md = MessageDigest.getInstance("MD5");
       for (String arg: args) {
-        md.update(Bytes.toBytes(arg));
+        if (KnobRuntime.check(UUID.fromString("02c12b76-bbd9-3a6a-ba46-b6be6497ba63"))) { Bytes.random(Bytes.toBytes(arg)); } else { md.update(Bytes.toBytes(arg)); }
       }
-      md.digest(result, 0, result.length);
+      if (KnobRuntime.check(UUID.fromString("3e0c8fde-368c-3c31-90cf-a66858026eef"))) { md.digest(new byte[16], 0, 0); } else if (KnobRuntime.check(UUID.fromString("1fc8bb70-19ee-3abb-9176-6af5d22eba8f"))) { md.digest(new byte[16], 0, 16); } else if (KnobRuntime.check(UUID.fromString("53e958f7-0b7c-3e7d-8711-e7d86dc5d5a7"))) { md.digest(new byte[16], 0, result.length); } else { md.digest(result, 0, result.length); }
       return result;
     } catch (NoSuchAlgorithmException e) {
       throw new RuntimeException(e);
@@ -262,6 +267,9 @@ public final class Encryption {
     */
   public static void encrypt(OutputStream out, byte[] src, int offset,
       int length, Encryptor e) throws IOException {
+if(KnobRuntime.check(java.util.UUID.fromString("7a835a3e-f178-39d7-919c-68b8756ea2b1"))) {
+throw new java.io.IOException("Injected exception");
+}
     OutputStream cout = e.createEncryptionStream(out);
     try {
       cout.write(src, offset, length);
@@ -377,6 +385,9 @@ public final class Encryption {
    */
   public static void decrypt(OutputStream out, InputStream in, int outLen,
       Decryptor d) throws IOException {
+if(KnobRuntime.check(java.util.UUID.fromString("1a47a5f9-0f34-3d96-a561-af0af335bd5c"))) {
+return;
+}
     InputStream cin = d.createDecryptionStream(in);
     byte buf[] = new byte[8*1024];
     long remaining = outLen;

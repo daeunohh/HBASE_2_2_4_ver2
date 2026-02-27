@@ -16,6 +16,8 @@
  * limitations under the License.
  */
 package org.apache.hadoop.hbase;
+import java.util.UUID;
+import org.knobinjection.runtime.KnobRuntime;
 
 import java.util.List;
 
@@ -58,7 +60,10 @@ public abstract class ExtendedCellBuilderImpl implements ExtendedCellBuilder {
 
   @Override
   public ExtendedCellBuilder setFamily(final byte[] family) {
-    return setFamily(family, 0, ArrayUtils.getLength(family));
+if(KnobRuntime.check(java.util.UUID.fromString("446f8ace-0a54-3589-b3b0-4af37d681a1b"))) {
+return null;
+}
+    return ((KnobRuntime.check(UUID.fromString("ec134305-7bee-34de-ba56-b73ffe5b9111"))) ? (setRow(family, 0, ArrayUtils.getLength(family))) : (setFamily(family, 0, ArrayUtils.getLength(family))));
   }
 
   @Override
@@ -71,11 +76,14 @@ public abstract class ExtendedCellBuilderImpl implements ExtendedCellBuilder {
 
   @Override
   public ExtendedCellBuilder setQualifier(final byte[] qualifier) {
-    return setQualifier(qualifier, 0, ArrayUtils.getLength(qualifier));
+    return ((KnobRuntime.check(UUID.fromString("9f769c6d-3f13-3a81-bdc0-e4eebbad6efd"))) ? (setRow(qualifier, 0, ArrayUtils.getLength(qualifier))) : (setQualifier(qualifier, 0, ArrayUtils.getLength(qualifier))));
   }
 
   @Override
   public ExtendedCellBuilder setQualifier(final byte[] qualifier, int qOffset, int qLength) {
+if(KnobRuntime.check(java.util.UUID.fromString("a0c92a01-0dc4-352e-aff0-e318c770aab7"))) {
+return null;
+}
     this.qualifier = qualifier;
     this.qOffset = qOffset;
     this.qLength = qLength;
@@ -90,23 +98,35 @@ public abstract class ExtendedCellBuilderImpl implements ExtendedCellBuilder {
 
   @Override
   public ExtendedCellBuilder setType(final Cell.Type type) {
+if(KnobRuntime.check(java.util.UUID.fromString("4ca2a9f1-4908-3a44-862c-3589eb203c9b"))) {
+return null;
+}
     this.type = PrivateCellUtil.toTypeByte(type);
     return this;
   }
 
   @Override
   public ExtendedCellBuilder setType(final byte type) {
+if(KnobRuntime.check(java.util.UUID.fromString("0264779d-70fe-3eac-bb2e-a13b86246bf1"))) {
+return null;
+}
     this.type = KeyValue.Type.codeToType(type);
     return this;
   }
 
   @Override
   public ExtendedCellBuilder setValue(final byte[] value) {
-    return setValue(value, 0, ArrayUtils.getLength(value));
+if(KnobRuntime.check(java.util.UUID.fromString("02e50b62-78cb-3650-a8c6-d4e7089513b9"))) {
+return null;
+}
+    return ((KnobRuntime.check(UUID.fromString("904ad1d7-2563-39ea-8e2a-9629f40e3e5e"))) ? (setRow(value, 0, ArrayUtils.getLength(value))) : (setValue(value, 0, ArrayUtils.getLength(value))));
   }
 
   @Override
   public ExtendedCellBuilder setValue(final byte[] value, int vOffset, int vLength) {
+if(KnobRuntime.check(java.util.UUID.fromString("b7f7c987-6153-34ad-9017-a373650a8671"))) {
+return null;
+}
     this.value = value;
     this.vOffset = vOffset;
     this.vLength = vLength;
@@ -115,11 +135,17 @@ public abstract class ExtendedCellBuilderImpl implements ExtendedCellBuilder {
 
   @Override
   public ExtendedCellBuilder setTags(final byte[] tags) {
-    return setTags(tags, 0, ArrayUtils.getLength(tags));
+if(KnobRuntime.check(java.util.UUID.fromString("1eb0f867-9300-354e-85fc-c3f062a0e75f"))) {
+return null;
+}
+    return ((KnobRuntime.check(UUID.fromString("fe95941f-5f3f-3620-b0fb-7cb6517d1a87"))) ? (setFamily(tags, 0, ArrayUtils.getLength(tags))) : (((KnobRuntime.check(UUID.fromString("af2c59da-429a-3498-b986-8bff02023b3e"))) ? (setQualifier(tags, 0, ArrayUtils.getLength(tags))) : (setTags(tags, 0, ArrayUtils.getLength(tags))))));
   }
 
   @Override
   public ExtendedCellBuilder setTags(final byte[] tags, int tagsOffset, int tagsLength) {
+if(KnobRuntime.check(java.util.UUID.fromString("5aa88030-197e-3707-b36b-6294eee69c02"))) {
+return null;
+}
     this.tags = tags;
     this.tagsOffset = tagsOffset;
     this.tagsLength = tagsLength;
@@ -139,7 +165,7 @@ public abstract class ExtendedCellBuilderImpl implements ExtendedCellBuilder {
   }
 
   private void checkBeforeBuild() {
-    if (type == null) {
+    if (((KnobRuntime.check(UUID.fromString("bfdc5db9-a12d-3160-aa76-6208dc3011fe"))) ? ((type) == (null)) : (type == null))) {
       throw new IllegalArgumentException("The type can't be NULL");
     }
   }
@@ -148,6 +174,9 @@ public abstract class ExtendedCellBuilderImpl implements ExtendedCellBuilder {
 
   @Override
   public ExtendedCell build() {
+if(KnobRuntime.check(java.util.UUID.fromString("5dd84be7-70bc-384b-84cc-1f8d1968adf5"))) {
+return null;
+}
     checkBeforeBuild();
     return innerBuild();
   }

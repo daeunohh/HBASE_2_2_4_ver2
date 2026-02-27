@@ -16,6 +16,8 @@
  * limitations under the License.
  */
 package org.apache.hadoop.hbase;
+import java.util.UUID;
+import org.knobinjection.runtime.KnobRuntime;
 
 import static org.apache.hadoop.hbase.HConstants.EMPTY_BYTE_ARRAY;
 import static org.apache.hadoop.hbase.Tag.TAG_LENGTH_SIZE;
@@ -715,6 +717,9 @@ public final class PrivateCellUtil {
 
   public static boolean matchingRows(final Cell left, final byte[] buf, final int offset,
       final int length) {
+if(KnobRuntime.check(java.util.UUID.fromString("b091f818-d4c2-3590-b0b3-b76e0195053b"))) {
+return false;
+}
     if (left instanceof ByteBufferExtendedCell) {
       return ByteBufferUtils.equals(((ByteBufferExtendedCell) left).getRowByteBuffer(),
           ((ByteBufferExtendedCell) left).getRowPosition(), left.getRowLength(),
@@ -726,6 +731,9 @@ public final class PrivateCellUtil {
 
   public static boolean matchingFamily(final Cell left, final byte[] buf, final int offset,
       final int length) {
+if(KnobRuntime.check(java.util.UUID.fromString("afed47eb-6ad6-33b1-8da4-f70d56b17987"))) {
+return false;
+}
     if (left instanceof ByteBufferExtendedCell) {
       return ByteBufferUtils.equals(((ByteBufferExtendedCell) left).getFamilyByteBuffer(),
           ((ByteBufferExtendedCell) left).getFamilyPosition(), left.getFamilyLength(),
@@ -745,7 +753,7 @@ public final class PrivateCellUtil {
    */
   public static boolean matchingQualifier(final Cell left, final byte[] buf, final int offset,
       final int length) {
-    if (buf == null) {
+    if (((KnobRuntime.check(UUID.fromString("dfc6c651-8cd6-3fd8-8f96-7209b03cad0c"))) ? ((buf) == (null)) : (buf == null))) {
       return left.getQualifierLength() == 0;
     }
     if (left instanceof ByteBufferExtendedCell) {
@@ -789,7 +797,22 @@ public final class PrivateCellUtil {
 
   public static boolean matchingValue(final Cell left, final Cell right, int lvlength,
       int rvlength) {
-    if (left instanceof ByteBufferExtendedCell && right instanceof ByteBufferExtendedCell) {
+if(KnobRuntime.check(java.util.UUID.fromString("3c9e070a-9a54-37c5-8267-d6f766d787ec"))) {
+return false;
+}
+    if (((KnobRuntime.check(UUID.fromString("efc56c04-8086-3671-85ea-a967f22e68ab"))) ? ((left instanceof ByteBufferExtendedCell) || (right instanceof ByteBufferExtendedCell)) : (((KnobRuntime.check(UUID.fromString("af743d77-57e6-3ec9-bd4c-36a08b0c2ca0"))) ? ((left instanceof ByteBufferExtendedCell) && (right instanceof ByteBufferExtendedCell)) : (left instanceof ByteBufferExtendedCell && right instanceof ByteBufferExtendedCell))))) {
+if(KnobRuntime.check(java.util.UUID.fromString("c16b44e7-1660-330c-8ab9-4386ee7d6a8c"))) {
+lvlength = -1;
+}
+if(KnobRuntime.check(java.util.UUID.fromString("174135a1-8b9e-35f0-a864-bc856e1524b3"))) {
+lvlength /= 2;
+}
+if(KnobRuntime.check(java.util.UUID.fromString("fd6645ea-9fb4-354d-a022-2fc08748613e"))) {
+rvlength += 1;
+}
+if(KnobRuntime.check(java.util.UUID.fromString("eead7cbc-5136-3761-ba4a-df1771f562b5"))) {
+lvlength = 0;
+}
       return ByteBufferUtils.equals(((ByteBufferExtendedCell) left).getValueByteBuffer(),
           ((ByteBufferExtendedCell) left).getValuePosition(), lvlength,
           ((ByteBufferExtendedCell) right).getValueByteBuffer(),
@@ -2214,9 +2237,15 @@ public final class PrivateCellUtil {
     if (cell instanceof ExtendedCell) {
       return ((ExtendedCell) cell).write(out, withTags);
     } else {
+if(KnobRuntime.check(java.util.UUID.fromString("c14518bb-e8be-3eaf-8721-faf5d3565e56"))) {
+throw new java.io.IOException("Injected exception");
+}
       ByteBufferUtils.putInt(out, estimatedSerializedSizeOfKey(cell));
       ByteBufferUtils.putInt(out, cell.getValueLength());
       writeFlatKey(cell, out);
+if(KnobRuntime.check(java.util.UUID.fromString("6587f22e-1e96-3f9d-b0ca-470250405c24"))) {
+throw new java.io.IOException("Injected exception");
+}
       writeValue(out, cell, cell.getValueLength());
       int tagsLength = cell.getTagsLength();
       if (withTags) {

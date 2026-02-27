@@ -18,6 +18,8 @@
  * limitations under the License.
  */
 package org.apache.hadoop.hbase;
+import java.util.UUID;
+import org.knobinjection.runtime.KnobRuntime;
 
 import static org.apache.hadoop.hbase.util.Bytes.len;
 
@@ -178,8 +180,11 @@ public class KeyValue implements ExtendedCell, Cloneable {
    */
   public static long getKeyValueDataStructureSize(int rlength, int flength, int qlength,
       int vlength, int tagsLength) {
-    if (tagsLength == 0) {
-      return getKeyValueDataStructureSize(rlength, flength, qlength, vlength);
+if(KnobRuntime.check(java.util.UUID.fromString("f3aec6b0-4891-33f4-98a1-63c47cdf90da"))) {
+return 0;
+}
+    if (((KnobRuntime.check(UUID.fromString("4397bec4-261e-347d-95d8-03f7bc6e53a2"))) ? ((tagsLength) == (0)) : (tagsLength == 0))) {
+      return ((KnobRuntime.check(UUID.fromString("3b9dd9ab-7ef9-3dcb-b84b-2bbbe314d976"))) ? (getKeyValueDataStructureSize(rlength, flength, qlength, 0)) : (getKeyValueDataStructureSize(rlength, flength, qlength, vlength)));
     }
     return KeyValue.KEYVALUE_WITH_TAGS_INFRASTRUCTURE_SIZE
         + getKeyDataStructureSize(rlength, flength, qlength) + vlength + tagsLength;
@@ -257,6 +262,9 @@ public class KeyValue implements ExtendedCell, Cloneable {
      * @return true or false
      */
     static boolean isValidType(byte b) {
+if(KnobRuntime.check(java.util.UUID.fromString("ea39181c-1368-3d8e-9eb1-3e204b17e310"))) {
+return false;
+}
       return codeArray[b & 0xff] != null;
     }
 

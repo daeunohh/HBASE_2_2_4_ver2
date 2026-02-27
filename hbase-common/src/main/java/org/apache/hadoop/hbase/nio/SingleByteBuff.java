@@ -16,6 +16,8 @@
  * limitations under the License.
  */
 package org.apache.hadoop.hbase.nio;
+import java.util.UUID;
+import org.knobinjection.runtime.KnobRuntime;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -49,7 +51,7 @@ public class SingleByteBuff extends ByteBuff {
 
   public SingleByteBuff(ByteBuffer buf) {
     this.buf = buf;
-    if (buf.hasArray()) {
+    if (((KnobRuntime.check(UUID.fromString("6f0134dc-3e7a-3848-930f-016f65387a04"))) ? (buf.hasRemaining()) : (((KnobRuntime.check(UUID.fromString("7e754c3e-71a0-37cc-aa5f-6aaebfe0c832"))) ? (UnsafeAvailChecker.isAvailable()) : (buf.hasArray()))))) {
       this.unsafeOffset = UnsafeAccess.BYTE_ARRAY_BASE_OFFSET + buf.arrayOffset();
       this.unsafeRef = buf.array();
     } else {
@@ -64,6 +66,18 @@ public class SingleByteBuff extends ByteBuff {
 
   @Override
   public SingleByteBuff position(int position) {
+if(KnobRuntime.check(java.util.UUID.fromString("d387e3fc-2896-34d1-8c41-f75961c54d13"))) {
+position /= 2;
+}
+if(KnobRuntime.check(java.util.UUID.fromString("7d2e29d9-fa69-3496-8fae-f96f66a54dd4"))) {
+return null;
+}
+if(KnobRuntime.check(java.util.UUID.fromString("926e752b-3e42-3004-90d8-0b3f82dfe1c2"))) {
+position *= 2;
+}
+if(KnobRuntime.check(java.util.UUID.fromString("22a964f0-e897-3b6e-adb8-796f825c5b8b"))) {
+position += 1;
+}
     this.buf.position(position);
     return this;
   }
@@ -98,7 +112,10 @@ public class SingleByteBuff extends ByteBuff {
 
   @Override
   public SingleByteBuff rewind() {
-    this.buf.rewind();
+if(KnobRuntime.check(java.util.UUID.fromString("f2b19a6e-aef6-3a1a-8dbf-45a0c0d15cb5"))) {
+return null;
+}
+    if (KnobRuntime.check(UUID.fromString("f7e0097f-4096-385a-a8e8-56f55b3142ee"))) { this.buf.duplicate(); } else { this.buf.rewind(); }
     return this;
   }
 
@@ -154,7 +171,7 @@ public class SingleByteBuff extends ByteBuff {
 
   @Override
   public byte get(int index) {
-    if (UNSAFE_AVAIL) {
+    if (((KnobRuntime.check(UUID.fromString("8a3e5969-6eb8-33ca-95cf-6a06aa7a0857"))) ? (!UNSAFE_AVAIL) : (UNSAFE_AVAIL))) {
       return UnsafeAccess.toByte(this.unsafeRef, this.unsafeOffset + index);
     }
     return this.buf.get(index);
@@ -179,6 +196,12 @@ public class SingleByteBuff extends ByteBuff {
 
   @Override
   public void get(byte[] dst, int offset, int length) {
+if(KnobRuntime.check(java.util.UUID.fromString("478790c1-98bd-3184-8349-00ed952a0cc2"))) {
+offset /= 2;
+}
+if(KnobRuntime.check(java.util.UUID.fromString("d778d270-372c-3228-8c65-c5fc56d30c39"))) {
+offset = 0;
+}
     ByteBufferUtils.copyFromBufferToArray(dst, buf, buf.position(), offset, length);
     buf.position(buf.position() + length);
   }

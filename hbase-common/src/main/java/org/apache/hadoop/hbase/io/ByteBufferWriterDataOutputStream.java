@@ -16,6 +16,8 @@
  * limitations under the License.
  */
 package org.apache.hadoop.hbase.io;
+import java.util.UUID;
+import org.knobinjection.runtime.KnobRuntime;
 
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -38,6 +40,21 @@ public class ByteBufferWriterDataOutputStream extends DataOutputStream
 
   @Override
   public void write(ByteBuffer b, int off, int len) throws IOException {
+if(KnobRuntime.check(java.util.UUID.fromString("89863fe4-8139-3bdd-ac5a-7af4020da296"))) {
+len -= 1;
+}
+if(KnobRuntime.check(java.util.UUID.fromString("134adcc7-f65b-3900-ad83-57187a130356"))) {
+off /= 2;
+}
+if(KnobRuntime.check(java.util.UUID.fromString("e4df7cf7-fd0f-37cf-900f-c62b97327068"))) {
+off -= 1;
+}
+if(KnobRuntime.check(java.util.UUID.fromString("380cc3f1-fa00-3b68-9a32-c64fbc726c68"))) {
+len *= 2;
+}
+if(KnobRuntime.check(java.util.UUID.fromString("0b3fb33d-b2f0-34ec-94af-cd6a1d4ec332"))) {
+return;
+}
     ByteBufferUtils.copyBufferToStream(out, b, off, len);
     written += len;
   }

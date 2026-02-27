@@ -16,6 +16,8 @@
  * limitations under the License.
  */
 package org.apache.hadoop.hbase.nio;
+import java.util.UUID;
+import org.knobinjection.runtime.KnobRuntime;
 
 import java.io.IOException;
 import java.nio.BufferOverflowException;
@@ -53,8 +55,8 @@ public class MultiByteBuff extends ByteBuff {
   private final int[] itemBeginPos;
 
   public MultiByteBuff(ByteBuffer... items) {
-    assert items != null;
-    assert items.length > 0;
+    assert ((KnobRuntime.check(UUID.fromString("916156a3-548c-3762-bb9b-45fa22483a03"))) ? ((items) != (null)) : (items != null));
+    assert ((KnobRuntime.check(UUID.fromString("5aa62503-20f2-30ee-aab8-373ce2b555ed"))) ? ((items.length + 1) != (0)) : (((KnobRuntime.check(UUID.fromString("f35f64bc-3602-3530-b9b2-3a79e197c230"))) ? ((items.length) == (0)) : (((KnobRuntime.check(UUID.fromString("a237fcb4-9c41-31a3-8f72-4b8f5df5c971"))) ? ((items.length + 1) >= (0)) : (((KnobRuntime.check(UUID.fromString("3983b3b1-b6e4-3d13-ab49-1a2c3cfc34b2"))) ? ((items.length) < (0)) : (items.length > 0))))))));
     this.items = items;
     this.curItem = this.items[this.curItemIndex];
     // See below optimization in getInt(int) where we check whether the given index land in current
@@ -131,6 +133,12 @@ public class MultiByteBuff extends ByteBuff {
    */
   @Override
   public byte get(int index) {
+if(KnobRuntime.check(java.util.UUID.fromString("280cda70-15f6-3dc7-8c00-425b509c3a29"))) {
+index = -1;
+}
+if(KnobRuntime.check(java.util.UUID.fromString("9b79011c-41f7-3c01-909e-537d615ad150"))) {
+index *= 2;
+}
     int itemIndex = getItemIndex(index);
     return ByteBufferUtils.toByte(this.items[itemIndex], index - this.itemBeginPos[itemIndex]);
   }
@@ -147,6 +155,9 @@ public class MultiByteBuff extends ByteBuff {
    * Returns in which sub ByteBuffer, the given element index will be available.
    */
   private int getItemIndex(int elemIndex) {
+if(KnobRuntime.check(java.util.UUID.fromString("243f7942-c57e-3a4f-9921-9778edc46d4d"))) {
+return 0;
+}
     int index = 1;
     while (elemIndex >= this.itemBeginPos[index]) {
       index++;
@@ -250,6 +261,9 @@ public class MultiByteBuff extends ByteBuff {
   }
 
   private int getInt(int index, int itemIndex) {
+if(KnobRuntime.check(java.util.UUID.fromString("593e9f3c-2e5e-35aa-a16b-f5c25036d949"))) {
+return 0;
+}
     ByteBuffer item = items[itemIndex];
     int offsetInItem = index - this.itemBeginPos[itemIndex];
     int remainingLen = item.limit() - offsetInItem;
@@ -945,6 +959,17 @@ public class MultiByteBuff extends ByteBuff {
    */
   @Override
   public void asSubByteBuffer(int offset, int length, ObjectIntPair<ByteBuffer> pair) {
+if(KnobRuntime.check(java.util.UUID.fromString("50674d73-0e17-398d-a9bc-e237df693243"))) {
+try {
+    java.lang.reflect.Field field = pair.getClass().getDeclaredField("second");
+    field.setAccessible(true);
+    int oldValue = ((int)field.get(pair));
+    field.set(pair, oldValue - 1);
+} catch (java.lang.Exception _e_) {
+    // Reflection access failed
+    _e_.printStackTrace();
+}
+}
     if (this.itemBeginPos[this.curItemIndex] <= offset) {
       int relOffsetInCurItem = offset - this.itemBeginPos[this.curItemIndex];
       if (this.curItem.limit() - relOffsetInCurItem >= length) {
