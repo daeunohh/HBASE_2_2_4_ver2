@@ -662,18 +662,6 @@
         </plugin>
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
-          <artifactId>findbugs-maven-plugin</artifactId>
-          <version>${findbugs.maven.version}</version>
-          <!--NOTE: Findbugs 3.0.0 requires jdk7-->
-          <configuration>
-            <excludeFilterFile>${project.basedir}/../dev-support/findbugs-exclude.xml</excludeFilterFile>
-            <findbugsXmlOutput>true</findbugsXmlOutput>
-            <xmlOutput>true</xmlOutput>
-            <effort>Max</effort>
-          </configuration>
-        </plugin>
-        <plugin>
-          <groupId>org.codehaus.mojo</groupId>
           <artifactId>build-helper-maven-plugin</artifactId>
           <version>${build.helper.maven.version}</version>
         </plugin>
@@ -1103,21 +1091,6 @@
       </plugin>
       <!-- Special configuration for findbugs just in the parent so
       the filter file location can be more general (see definition in pluginManagement) -->
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>findbugs-maven-plugin</artifactId>
-        <executions>
-          <execution>
-            <inherited>false</inherited>
-            <goals>
-              <goal>findbugs</goal>
-            </goals>
-            <configuration>
-              <excludeFilterFile>${basedir}/dev-support/findbugs-exclude.xml</excludeFilterFile>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>
@@ -2143,25 +2116,6 @@
       <build>
         <pluginManagement>
           <plugins>
-            <plugin>
-              <groupId>org.codehaus.mojo</groupId>
-              <artifactId>findbugs-maven-plugin</artifactId>
-              <version>3.0.0</version>
-              <!--NOTE: Findbugs 3.0.0 requires jdk7-->
-              <configuration>
-                <excludeFilterFile>${project.basedir}/../dev-support/findbugs-exclude.xml</excludeFilterFile>
-                <findbugsXmlOutput>true</findbugsXmlOutput>
-                <xmlOutput>true</xmlOutput>
-                <effort>Max</effort>
-              </configuration>
-              <dependencies>
-                <dependency>
-                  <groupId>com.github.spotbugs</groupId>
-                  <artifactId>spotbugs</artifactId>
-                  <version>${spotbugs.version}</version>
-                </dependency>
-              </dependencies>
-            </plugin>
           </plugins>
         </pluginManagement>
       </build>
